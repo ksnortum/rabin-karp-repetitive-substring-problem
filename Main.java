@@ -4,8 +4,6 @@ public class Main {
     private static final int A = 53;
     private static final long M = (long) Math.pow(2, 31) - 1; // 1_000_000_000 + 9;
 
-    private static Map<Long, Integer> 
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String string = scanner.nextLine();
@@ -50,21 +48,17 @@ public class Main {
 
         for (int i = text.length(); i >= pattern.length(); i--) {
             if (patternHash == currSubstrHash) {
-//                boolean patternIsFound = true;
-//
-//                for (int j = 0; j < pattern.length(); j++) {
-//                    if (text.charAt(i - pattern.length() + j) != pattern.charAt(j)) {
-//                        patternIsFound = false;
-//                        break;
-//                    }
-//                }
-//
-//                if (patternIsFound) {
-                String textPart = text.substring(i - pattern.length(), i);
+                boolean patternIsFound = true;
 
-                if (pattern.equals(textPart)) {
-                    occurrences.add(textPart);
-//                    occurrences.add(text.substring(i - pattern.length(), i));
+                for (int j = 0; j < pattern.length(); j++) {
+                    if (text.charAt(i - pattern.length() + j) != pattern.charAt(j)) {
+                        patternIsFound = false;
+                        break;
+                    }
+                }
+
+                if (patternIsFound) {
+                    occurrences.add(text.substring(i - pattern.length(), i));
 
                     if (occurrences.size() > 1) {
                         return occurrences;
